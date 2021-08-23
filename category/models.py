@@ -26,3 +26,32 @@ class Product(models.Model):
         on_delete=models.CASCADE,
         related_name='products'
     )
+
+
+class Characteristic(models.Model):
+    name = models.CharField(max_length=100)
+    value = models.CharField(max_length=100)
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.CASCADE,
+        related_name='characteristics'
+    )
+
+
+class ProductImage(models.Model):
+    path = models.ImageField()
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.CASCADE,
+        related_name='images'
+    )
+
+
+class Discount(models.Model):
+    percent = models.PositiveSmallIntegerField()
+    start_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField()
+    products = models.ManyToManyField(
+        'Product',
+        related_name='discounts'
+    )
