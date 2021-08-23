@@ -1,4 +1,4 @@
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 from mptt.models import MPTTModel, TreeForeignKey
@@ -14,6 +14,7 @@ class Category(MPTTModel, models.Model):
         blank=True,
         null=True,
         related_name='children',
+        related_query_name='child',
         verbose_name=_('родительская категория')
     )
 
@@ -41,6 +42,7 @@ class Product(models.Model):
         'Category',
         on_delete=models.CASCADE,
         related_name='products',
+        related_query_name='product',
         verbose_name='категория'
     )
 
@@ -54,29 +56,54 @@ class Product(models.Model):
 
 
 class Characteristic(models.Model):
-    name = models.CharField(max_length=100)
-    value = models.CharField(max_length=100)
+    name = models.CharField(_('характеристика'), max_length=100)
+    value = models.CharField(_('значение'), max_length=100)
     product = models.ForeignKey(
         'Product',
         on_delete=models.CASCADE,
-        related_name='characteristics'
+        related_name='characteristics',
+        related_query_name='characteristic',
+        verbose_name=_('товар')
     )
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _('характеристика')
+        verbose_name_plural = _('характеристик')
+
+    def __str__(self):
+        return f'{self.name} - {self.value}'
 
 
 class ProductImage(models.Model):
-    path = models.ImageField()
+    path = models.ImageField(_('путь'))
     product = models.ForeignKey(
         'Product',
         on_delete=models.CASCADE,
-        related_name='images'
+        related_name='images',
+        verbose_name=_('товар')
     )
+
+    class Meta:
+        verbose_name = _('картинка товара')
+        verbose_name_plural = _('картинки товаров')
+
+    def __str__(self):
+        return f'Картинка товара {self.product}'
 
 
 class Discount(models.Model):
-    percent = models.PositiveSmallIntegerField()
-    start_datetime = models.DateTimeField()
-    end_datetime = models.DateTimeField()
+    percent = models.PositiveSmallIntegerField(verbose_name=_('процент скидки'), validators=[MaxValueValidator(100)])
+    start_datetime = models.DateTimeField(verbose_name=_('время начала скидки'))
+    end_datetime = models.DateTimeField(verbose_name=_('время конца скидки'))
     products = models.ManyToManyField(
         'Product',
-        related_name='discounts'
+        related_name='discounts',
+        related_query_name='discount',
+        verbose_name=_('скидка')
     )
+
+    class Meta:
+        ordering = ['percent']
+        verbose_name = _('скидка')
+        verbose_name_plural = _('скидки')
