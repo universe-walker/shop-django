@@ -1,16 +1,26 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.utils.translation import gettext as _
+from mptt.models import MPTTModel, TreeForeignKey
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
+class Category(MPTTModel, models.Model):
+    name = models.CharField(_('Название'), max_length=100)
     img = models.ImageField()
     slug = models.SlugField(max_length=100)
-    parent = models.ForeignKey(
-        'Category',
+    parent = TreeForeignKey(
+        'self',
         on_delete=models.CASCADE,
+        blank=True,
+        null=True,
         related_name='children'
     )
+
+    class Meta:
+        ordering = ['tree_id', 'lft']
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
 
 class Product(models.Model):
