@@ -7,6 +7,7 @@
 /* Стили */
 .wrapper {
   overflow: hidden;
+  font-family: sans-serif;
 }
  .nav {
   height: 60px;
@@ -32,6 +33,7 @@
 }
  .nav__item a:hover {
   color: rgba(0, 255, 0, 0.5);
+  transition-duration: .4s;
 }
 .nav__right {
   margin: 0 auto;
@@ -53,4 +55,5 @@
 .search__btn:hover {
   background-color: rgba(0, 255, 0, 0.5);
   color: #fff;
+  transition-duration: .4s;
 }

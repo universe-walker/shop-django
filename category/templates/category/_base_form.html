@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/form_styles.css' %}">
+{% endblock %}
+
+{% block main %}
+  <div class="container">
+    <div class="form">
+      <div class="form__row">
+        <h3 class="form__title">
+          {% block form_title %}{% endblock %}
+        </h3>
+        <form action="{% block action %}{% endblock %}" method="POST">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form__label">
+              {{ field.label_tag }}
+            </div>
+            <div class="form__field">
+              {{ field }}
+            </div>
+            {% if field.errors %}
+              {% for error in field.errors %}
+                {{ error }}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+            <button type="submit" name="button" class="form__button">{% block btn_text %}{% endblock %}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
