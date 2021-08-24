@@ -1,0 +1,56 @@
+/* Переменные */
+/* Mixins */
+.button {
+  border: 0;
+  border-radius: 5px;
+}
+/* Стили */
+.wrapper {
+  overflow: hidden;
+}
+ .nav {
+  height: 60px;
+  background-color: #333333;
+  font-family: sans-serif;
+}
+.nav__row {
+  padding: 20px 0 0 0;
+  display: flex;
+}
+.nav__left {
+  display: flex;
+  width: 70%;
+  font-size: 25px;
+}
+.nav__item {
+  margin-left: 20px;
+  line-height: 1;
+}
+.nav__item a {
+  text-decoration: none;
+  color: #fff;
+}
+ .nav__item a:hover {
+  color: rgba(0, 255, 0, 0.5);
+}
+.nav__right {
+  margin: 0 auto;
+}
+.nav__search {
+  padding: 0;
+}
+.search__input {
+  height: 30.5px;
+  border: 0;
+  border-radius: 5px;
+}
+.search__btn {
+  border: 0;
+  border-radius: 5px;
+  height: 30.5px;
+  width: 70px;
+}
+.search__btn:hover {
+  background-color: rgba(0, 255, 0, 0.5);
+  color: #fff;
+}

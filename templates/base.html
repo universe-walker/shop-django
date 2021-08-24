@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>МАудио | {% block title %}{% endblock %}</title>
+  {% block styles %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% endblock %}
+</head>
+<body>
+  <div class="wrapper">
+    <nav class="nav">
+      <nav class="nav__row">
+        <div class="nav__left">
+          <div class="nav__item">
+            <a href="#">Главная</a>
+          </div>
+          <div class="nav__item">
+            <a href="#">Категории</a>
+          </div>
+        </div>
+        <div class="nav__right">
+          <div class="nav__search">
+            <form action="#">
+              <input type="search" class="search__input">
+              <button type="submit" name="button" class="search__btn">Поиск</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </nav>
+    <main>
+      {% block main %}{% endblock %}
+    </main>
+  </div>
+  <script>
+      {% block scripts %}{% endblock %}
+  </script>
+</body>
+</html>

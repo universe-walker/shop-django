@@ -1,5 +1,9 @@
 from django.shortcuts import render, HttpResponse
+from django.views.generic import ListView
+
+from .models import Category
 
 
-def base_view(request):
-    return HttpResponse('Hello!')
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category/category_list.html'
