@@ -39,6 +39,12 @@ class Category(MPTTModel, models.Model):
     def get_absolute_url(self):
         return reverse_lazy('category_detail', kwargs={'slug': self.slug})
 
+    def get_update_url(self):
+        return reverse_lazy('category_update', kwargs={'slug': self.slug})
+
+    def get_delete_url(self):
+        return reverse_lazy('category_delete', kwargs={'slug': self.slug})
+
 
 class Product(models.Model):
     name = models.CharField(_('название товара'), max_length=140)
