@@ -7,3 +7,7 @@ class CategoryCreateForm(ModelForm):
     class Meta:
         model = Category
         fields = ['name', 'img', 'parent']
+
+
+class CategoryUpdateForm(CategoryCreateForm):
+    ...
