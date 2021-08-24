@@ -1,0 +1,8 @@
+{% extends 'category/_base_form.html' %}
+{% load static %}
+
+{% block title %}Редактирование '{{category.name}}'{% endblock %}
+
+{% block form_title %}Редактирование '{{category.name}}'{% endblock %}
+{% block action %}{{ category.get_update_url }}{% endblock %}
+{% block btn_text %}Редактировать{% endblock %}

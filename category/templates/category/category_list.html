@@ -1,1 +1,32 @@
 {% extends 'base.html' %}
+{% load mptt_tags %}
+{% load static %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/category_list.css' %}">
+{% endblock %}
+
+{% block title %}Список категорий{% endblock %}
+
+{% block main %}
+  <div class="container">
+    <p class="create"><a href="{% url 'category_create' %}">Создать категорию</a></p>
+    <ul class="root">
+      {% recursetree categories %}
+        <li>
+          <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+          {% if not node.is_leaf_node %}
+            <ul class="children">
+              {{ children }}
+            </ul>
+          {% endif %}
+        </li>
+      {% endrecursetree %}
+    </ul>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/category_list.js' %}"></script>
+{% endblock %}

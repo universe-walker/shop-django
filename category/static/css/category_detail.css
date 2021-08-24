@@ -1,0 +1,24 @@
+.admin_action {
+  display: inline-block;
+}
+
+.admin_action a {
+    text-decoration: none;
+    display: inline-block;
+    line-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+.admin_action a:hover {
+  background-color: rgba(0, 255, 0, 255);
+  color: #fff;
+  transition-duration: .4s;
+}
+
+.delete a:hover {
+  background-color: rgba(254,0,0,255);
+  color: #fff;
+  transition-duration: .4s;
+}

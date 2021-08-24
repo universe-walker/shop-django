@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Подтверждение удаления{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="delete">
+            <div class="delete__row">
+                <form method="post">
+                    {% csrf_token %}
+                    <p class="text-align-center">Вы уверены что вы хотите удалить "{{ object }}"?</p>
+                    <input type="submit" value="Удалить">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

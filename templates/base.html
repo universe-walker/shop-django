@@ -17,7 +17,7 @@
       <nav class="nav__row">
         <div class="nav__left">
           <div class="nav__item">
-            <a href="#">Главная</a>
+            <a href="{% url 'category_list' %}">Главная</a>
           </div>
           <div class="nav__item">
             <a href="#">Категории</a>
@@ -37,8 +37,7 @@
       {% block main %}{% endblock %}
     </main>
   </div>
-  <script>
-      {% block scripts %}{% endblock %}
-  </script>
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>
