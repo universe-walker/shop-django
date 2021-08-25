@@ -7,5 +7,7 @@ urlpatterns = [
     path('create-category/', views.CategoryCreateView.as_view(), name='category_create'),
     path('category/<slug>/', views.CategoryDetailView.as_view(), name='category_detail'),
     path('category-update/<slug>/', views.CategoryUpdateView.as_view(), name='category_update'),
-    path('category-delete/<slug>/', views.CategoryDeleteView.as_view(), name='category_delete')
+    path('category-delete/<slug>/', views.CategoryDeleteView.as_view(), name='category_delete'),
+    path('product/<slug>/', views.ProductDetailView.as_view(), name='product_detail'),
+    path('create-product/', views.ProductCreateView.as_view(), name='product_create'),
 ]

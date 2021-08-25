@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "category/_base_form.html" %}
+
+{% block title %}Создание товара{% endblock %}
+
+{% block form_title %}Создание товара{% endblock %}
+{% block action %}{% url 'product_create' %}{% endblock %}
+{% block btn_text %}Создать{% endblock %}
