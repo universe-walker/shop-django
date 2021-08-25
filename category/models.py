@@ -52,8 +52,8 @@ class Product(models.Model):
     price = models.IntegerField(_('цена'), validators=[MinValueValidator(0)])
     available = models.BooleanField(_('Доступен'), default=True)
     available_count = models.IntegerField(_('Доступное количество'), validators=[MinValueValidator(0)])
-    slug = models.SlugField(max_length=140)
-    rating = models.FloatField(_('Рейтинг'), validators=[MinValueValidator(0)])
+    slug = models.SlugField(max_length=140, blank=True)
+    rating = models.FloatField(_('Рейтинг'), validators=[MinValueValidator(0)], blank=True, null=True)
     category = models.ForeignKey(
         'Category',
         on_delete=models.CASCADE,
@@ -69,6 +69,14 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name} категории: {self.category}'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name, allow_unicode=True)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('product_detail', kwargs={'slug':self.slug})
 
 
 class Characteristic(models.Model):
