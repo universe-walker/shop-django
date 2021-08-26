@@ -40,3 +40,7 @@
 .form__field > input {
   width: 300px;
 }
+
+.error {
+  color: red;
+}

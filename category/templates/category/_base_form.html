@@ -13,21 +13,23 @@
         <h3 class="form__title">
           {% block form_title %}{% endblock %}
         </h3>
-        <form action="{% block action %}{% endblock %}" method="POST">
+        <form action="{% block action %}{% endblock %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
-          {% for field in form %}
-            <div class="form__label">
-              {{ field.label_tag }}
-            </div>
-            <div class="form__field">
-              {{ field }}
-            </div>
-            {% if field.errors %}
-              {% for error in field.errors %}
-                {{ error }}
-              {% endfor %}
-            {% endif %}
-          {% endfor %}
+          {% block form_body %}
+            {% for field in form %}
+              <div class="form__label">
+                {{ field.label_tag }}
+              </div>
+              <div class="form__field">
+                {{ field }}
+              </div>
+              {% if field.errors %}
+                {% for error in field.errors %}
+                  <div class="error">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endblock %}
             <button type="submit" name="button" class="form__button">{% block btn_text %}{% endblock %}</button>
         </form>
       </div>
