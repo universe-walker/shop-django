@@ -1,7 +1,9 @@
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from .models import Category, Product
+from .models import Category, Product, ProductImage
 from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm
 
 
@@ -46,3 +48,12 @@ class ProductCreateView(CreateView):
     form_class = ProductCreateForm
     template_name = 'category/product_create.html'
 
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        images = request.FILES.getlist('images')
+        print(images, 'images')
+        if form.is_valid():
+            instance = form.save()
+            ProductImage.objects.bulk_create([ProductImage(path=i, product=instance) for i in images])
+            return HttpResponseRedirect(instance.get_absolute_url())
+        return render(request, template_name=self.template_name, context={'form': form})
