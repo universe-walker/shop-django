@@ -8,7 +8,7 @@ from django.utils.text import slugify
 
 class Category(MPTTModel, models.Model):
     name = models.CharField(_('название'), max_length=100)
-    img = models.ImageField(_('путь к картинке'), blank=True)
+    img = models.ImageField(_('путь к картинке'), upload_to='categories/', blank=True)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
     parent = TreeForeignKey(
         'self',
@@ -100,7 +100,7 @@ class Characteristic(models.Model):
 
 
 class ProductImage(models.Model):
-    path = models.ImageField(_('путь'))
+    path = models.ImageField(_('путь'), upload_to='product_images/')
     product = models.ForeignKey(
         'Product',
         on_delete=models.CASCADE,
