@@ -15,7 +15,7 @@ class CategoryUpdateForm(CategoryCreateForm):
 
 
 class ProductCreateForm(ModelForm):
-    images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}), label='картинка')
+    images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}), label='Картинка')
 
     class Meta:
         model = Product
