@@ -45,7 +45,6 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['images'] = self.object.images.all()
-        print(context['images'][0].path)  # TODO: удалить
         return context
 
 
