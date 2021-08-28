@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}{{ category.name }}{% endblock %}
 {% block styles %}
@@ -8,9 +9,29 @@
 {% endblock %}
 
 {% block main %}
+  <aside class="filter">
+    <div class="filter__row">
+
+    </div>
+  </aside>
   <div class="container">
     <h2 class="text-align-center">{{ category.name }}</h2>
     <span class="admin_action update"><a href="{{ category.get_update_url }}">Редактировать</a></span>
     <span class="admin_action delete"><a href="{{ category.get_delete_url }}">Удалить</a></span>
+    <div class="cards">
+      <div class="cards__row">
+        {% for product in products %}
+          <div class="card__item">
+            <div class="card__image">
+              <img src="{{ product.images.first.path.url }}" alt="нет картинки">
+            </div>
+            <p class="card__title">{{ product.name }}</p>
+            <div class="card__discount"></div>
+            <div class="card__price">{{ product.price|intcomma }} р</div>
+            <button class="card__link"><a href="{{ product.get_absolute_url }}">Перейти</a></button>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 {% endblock %}

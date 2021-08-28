@@ -19,10 +19,16 @@ class CategoryCreateView(CreateView):
     form_class = CategoryCreateForm
 
 
-class CategoryDetailView(DetailView):
+class CategoryProductListView(DetailView):
     model = Category
     template_name = 'category/category_detail.html'
     context_object_name = 'category'
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryProductListView, self).get_context_data()
+        context['products'] = Product.objects.filter(category=self.object).all()
+        return context
+
 
 
 class CategoryUpdateView(UpdateView):
