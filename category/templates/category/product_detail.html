@@ -45,6 +45,7 @@
         </p>
         <p class="product__price"><strong>{{ product.price|intcomma }} р</strong></p>
         <p class="product__available-count">Доступно: {{ product.available_count }}</p>
+        <button class="product__add {% if not product.available and not product.available_count > 0 %}{{ 'disabled' }}{% endif %}">Добавить в корзину</button>
       </div>
     </div>
   </div>

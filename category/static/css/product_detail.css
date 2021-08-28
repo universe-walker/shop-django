@@ -69,3 +69,29 @@
   from {opacity: .4}
   to {opacity: 1}
 }
+
+.product__add {
+  border: none;
+  border-radius: 3px;
+  background-color: lightgreen;
+  box-shadow: 0 3px #999;
+}
+
+.product__add:hover {
+  background-color: darkgreen;
+  color: #fff;
+}
+
+.product__add:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #999;
+}
+
+.product {
+  padding-bottom: 100px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
