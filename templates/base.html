@@ -36,8 +36,21 @@
     <main>
       {% block main %}{% endblock %}
     </main>
+    <footer class="footer">
+      <div class="footer__row">
+        <div class="footer__communication">
+          <p class="communication__phone">8 (900) 34-24-10</p>
+          <p class="communication__adress">Москва, Сиреневый проезд, ул.Циолковского д.5</p>
+          <p class="communication__hours">Рабочие часы: ПН-ВС 9:00-18:00</p>
+        </div>
+        <div class="footer__info">
+          <p class="info__agreement"><a href="#">Пользовательское соглашение</a></p>
+          <p class="info__coockie"><a href="">Мы используем куки</a></p>
+        </div>
+      </div>
+    </footer>
   </div>
-  
+
   {% block scripts %}{% endblock %}
 </body>
 </html>

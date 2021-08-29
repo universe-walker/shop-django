@@ -1,5 +1,9 @@
 /* Переменные */
 /* Mixins */
+html, body {
+  height: 100%;
+}
+
 .button {
   border: 0;
   border-radius: 5px;
@@ -8,6 +12,9 @@
 .wrapper {
   overflow: hidden;
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
  .nav {
   height: 60px;
@@ -65,4 +72,24 @@
 
 .text-align-center {
   text-align: center;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+.footer {
+  background-color: rgba(46, 46, 46, 1);
+  height: 130px;
+  padding: 40px 0 0 0;
+  color: #fff;
+}
+
+.footer__row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer__info a {
+  color: lightgray;
 }
