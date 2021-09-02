@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -83,3 +83,11 @@ class SearchListView(ListView):
         if q := self.request.GET.get('q'):
             return Product.objects.filter(name__icontains=q)
         return None
+
+
+class SearchAdvice(View):
+    def get(self, request):
+        q = request.GET.get('q')
+        if q:
+            return JsonResponse({'products': Product.objects.filter(name__icontains=q)})
+        return JsonResponse({})
