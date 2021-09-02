@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views import View
 
 from .models import Category, Product, ProductImage
 from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm
@@ -28,7 +29,6 @@ class CategoryProductListView(DetailView):
         context = super(CategoryProductListView, self).get_context_data()
         context['products'] = Product.objects.filter(category=self.object).all()
         return context
-
 
 
 class CategoryUpdateView(UpdateView):
@@ -68,3 +68,18 @@ class ProductCreateView(CreateView):
             ProductImage.objects.bulk_create([ProductImage(path=i, product=instance) for i in images])
             return HttpResponseRedirect(instance.get_absolute_url())
         return render(request, template_name=self.template_name, context={'form': form})
+
+
+class SearchListView(ListView):
+    template_name = 'category/search_list.html'
+    context_object_name = 'products'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context
+
+    def get_queryset(self):
+        if q := self.request.GET.get('q'):
+            return Product.objects.filter(name__icontains=q)
+        return None

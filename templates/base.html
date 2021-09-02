@@ -25,8 +25,8 @@
         </div>
         <div class="nav__right">
           <div class="nav__search">
-            <form action="#">
-              <input type="search" class="search__input">
+            <form action="{% url 'search' %}" method="GET">
+              <input type="search" class="search__input" name=q>
               <button type="submit" name="button" class="search__btn">Поиск</button>
             </form>
           </div>
