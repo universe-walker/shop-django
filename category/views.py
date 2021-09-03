@@ -89,5 +89,5 @@ class SearchAdvice(View):
     def get(self, request):
         q = request.GET.get('q')
         if q:
-            return JsonResponse({'products': Product.objects.filter(name__icontains=q)})
+            return JsonResponse({'products': list(Product.objects.filter(name__icontains=q).values('name')[:5])})
         return JsonResponse({})
