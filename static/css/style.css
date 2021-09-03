@@ -93,3 +93,26 @@ main {
 .footer__info a {
   color: lightgray;
 }
+
+.search__advice {
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  background-color: rgba(0, 255, 0, 0.5);
+  height: auto;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.advice__item {
+  margin-left: 10px;
+}
+
+.advice__item:hover {
+  cursor: pointer;
+}
+
+.advice__not {
+  margin-left: 10px;
+}

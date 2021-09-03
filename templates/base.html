@@ -26,9 +26,10 @@
         <div class="nav__right">
           <div class="nav__search">
             <form action="{% url 'search' %}" method="GET">
-              <input type="search" class="search__input" name=q>
+              <input type="search" class="search__input" name="q" id="search">
               <button type="submit" name="button" class="search__btn">Поиск</button>
             </form>
+            <div class="search__advice"></div>
           </div>
         </div>
       </nav>
@@ -50,7 +51,9 @@
       </div>
     </footer>
   </div>
-
-  {% block scripts %}{% endblock %}
+  {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+  {% endblock %}
 </body>
 </html>
