@@ -11,5 +11,6 @@ urlpatterns = [
     path('product/<slug>/', views.ProductDetailView.as_view(), name='product_detail'),
     path('create-product/', views.ProductCreateView.as_view(), name='product_create'),
     path('search/', views.SearchListView.as_view(), name='search'),
-    path('search-advice/', views.SearchAdvice.as_view(), name='search_advice')
+    path('search-advice/', views.SearchAdvice.as_view(), name='search_advice'),
+    path('characteristic-create/product/<slug>/', views.CharacteristicCreateView.as_view(), name='characteristic_create')
 ]

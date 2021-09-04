@@ -1,11 +1,16 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
 from django.views import View
 
-from .models import Category, Product, ProductImage
-from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm
+from .models import Category, Product, ProductImage, Characteristic
+from .forms import (
+    CategoryCreateForm,
+    CategoryUpdateForm,
+    ProductCreateForm,
+    CharacteristicCreateFormSet,
+)
 
 
 class CategoryListView(ListView):
@@ -62,7 +67,6 @@ class ProductCreateView(CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         images = request.FILES.getlist('images')
-        print(images, 'images')
         if form.is_valid():
             instance = form.save()
             ProductImage.objects.bulk_create([ProductImage(path=i, product=instance) for i in images])
@@ -91,3 +95,27 @@ class SearchAdvice(View):
         if q:
             return JsonResponse({'products': list(Product.objects.filter(name__icontains=q).values('name')[:5])})
         return JsonResponse({})
+
+
+class CharacteristicCreateView(FormView):
+    model = Characteristic
+    form_class = CharacteristicCreateFormSet
+    template_name = 'category/characteristic_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_slug'] = self.request.resolver_match.kwargs['slug']
+        context['product'] = Product.objects.get(slug=context['current_slug'])
+        context['characteristics'] = context['product'].characteristics.all()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        product = self.get_context_data()['product']
+        bound_form = self.form_class(request.POST)
+        if bound_form.is_valid():
+            instances = bound_form.save(commit=False)
+            for i in instances:
+                i.product = product
+                i.save()
+            return HttpResponseRedirect(product.get_absolute_url())
+        return render(request, template_name=self.template_name, context={'form': bound_form})
