@@ -1,7 +1,8 @@
 from django.forms import ModelForm
 from django import forms
+from django.forms import modelformset_factory
 
-from .models import Category, Product, ProductImage
+from .models import Category, Product, ProductImage, Characteristic
 
 
 class CategoryCreateForm(ModelForm):
@@ -20,3 +21,12 @@ class ProductCreateForm(ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'price', 'available', 'available_count', 'category']
+
+
+class CharacteristicCreateForm(ModelForm):
+    class Meta:
+        model = Characteristic
+        fields = ['name', 'value', 'product']
+
+
+CharacteristicCreateFormSet = modelformset_factory(Characteristic, fields=('name', 'value'), extra=20)
