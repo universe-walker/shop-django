@@ -76,7 +76,10 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse_lazy('product_detail', kwargs={'slug':self.slug})
+        return reverse_lazy('product_detail', kwargs={'slug': self.slug})
+
+    def get_add_characteristics_url(self):
+        return reverse_lazy('characteristic_create', kwargs={'slug': self.slug})
 
 
 class Characteristic(models.Model):
