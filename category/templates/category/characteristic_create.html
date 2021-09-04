@@ -1,0 +1,31 @@
+{% extends "category/_base_form.html" %}
+{% load static %}
+
+{% block title %}Создание характеристик{% endblock %}
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/characteristic_create.css' %}">
+{% endblock %}
+
+{% block form_title %}Создание характеристик{% endblock %}
+{% block action %}{% url 'characteristic_create' slug=current_slug %}{% endblock %}
+{% block btn_text %}Сохранить{% endblock %}
+
+
+{% block extra_content %}
+  <div class="container">
+    <div class="characteristics">
+      <div class="characteristics__row">
+        <p class="characteristics__title">Существующие характеристики</p>
+        <div class="characteristics__table">
+          <table>
+            <tr><th>Характеристика</th><th>Значение</th></tr>
+            {% for c in characteristics %}
+              <tr><td>{{ c.name }}</td><td>{{ c.value }}</td></tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

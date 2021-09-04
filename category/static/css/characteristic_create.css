@@ -1,0 +1,10 @@
+.characteristics {
+  margin: 100px 0 100px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.characteristics__row {
+  text-align: center;
+}
