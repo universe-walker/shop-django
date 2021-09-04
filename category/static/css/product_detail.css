@@ -95,3 +95,18 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.product__add_characteristics > a {
+  display: inline-block;
+  padding: 7px 3px;
+  border-radius: 3px;
+  border: 1px solid darkgreen;
+  text-decoration: none;
+  color: black;
+}
+
+.product__add_characteristics > a:hover {
+  background-color: darkgreen;
+  color: #fff;
+  transition-duration: .3s;
+}

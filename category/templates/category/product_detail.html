@@ -17,6 +17,9 @@
     <div class="product">
       <div class="product__row">
         <h2 class="product__title text-align-center">{{ product.name }}</h2>
+        <div class="product__add_characteristics">
+          <a href="{{ product.get_add_characteristics_url }}">Добавить характеристики</a>
+        </div>
         <div class="product__slideshow">
           {% if images %}
             <div class="slideshow__container">
