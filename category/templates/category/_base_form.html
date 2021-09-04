@@ -16,6 +16,7 @@
         <form action="{% block action %}{% endblock %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {% block form_body %}
+            {{ form.management_form }}
             {% for field in form %}
               <div class="form__label">
                 {{ field.label_tag }}
@@ -35,4 +36,5 @@
       </div>
     </div>
   </div>
+  {% block extra_content %}{% endblock %}
 {% endblock %}

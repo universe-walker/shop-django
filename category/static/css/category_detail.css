@@ -74,3 +74,13 @@
   text-decoration: none;
   color: #333333;
 }
+
+.filter {
+  height: 700px;
+  width: 400px;
+  background-color: rgba(0, 255, 0, 0.5);
+  position: absolute;
+  right: 30px;
+  top: 190px;
+  border-radius: 5px;
+}
