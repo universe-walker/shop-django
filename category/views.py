@@ -97,20 +97,25 @@ class SearchAdvice(View):
         return JsonResponse({})
 
 
-class CharacteristicCreateView(FormView):
+class CharacteristicCreateView(CreateView):
     model = Characteristic
     form_class = CharacteristicCreateFormSet
     template_name = 'category/characteristic_create.html'
 
+    def get_form(self, form_class=None):
+        product = Product.objects.get(slug=self.kwargs['slug'])
+        formset = CharacteristicCreateFormSet(queryset=Characteristic.objects.filter(product=product))
+        return formset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['current_slug'] = self.request.resolver_match.kwargs['slug']
-        context['product'] = Product.objects.get(slug=context['current_slug'])
+        context['slug'] = self.kwargs['slug']
+        context['product'] = Product.objects.get(slug=context['slug'])
         context['characteristics'] = context['product'].characteristics.all()
         return context
 
     def post(self, request, *args, **kwargs):
-        product = self.get_context_data()['product']
+        product = Product.objects.get(slug=kwargs['slug'])
         bound_form = self.form_class(request.POST)
         if bound_form.is_valid():
             instances = bound_form.save(commit=False)
@@ -118,4 +123,4 @@ class CharacteristicCreateView(FormView):
                 i.product = product
                 i.save()
             return HttpResponseRedirect(product.get_absolute_url())
-        return render(request, template_name=self.template_name, context={'form': bound_form})
+        return render(request, template_name=self.template_name, context={'form': bound_form, 'slug': kwargs['slug']})
