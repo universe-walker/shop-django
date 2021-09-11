@@ -26,18 +26,28 @@ class CategoryCreateView(CreateView):
     form_class = CategoryCreateForm
 
 
-class CategoryProductListView(DetailView):
-    model = Category
+class CategoryProductListView(ListView):
+    model = Product
     template_name = 'category/category_detail.html'
-    context_object_name = 'category'
+    context_object_name = 'products'
+    paginate_by = 18
+
+    def get_characteristics(self):
+        category = Category.objects.get(slug=self.kwargs['slug'])
+        return Characteristic.objects.filter(product__category=category).all()
+
+    def get_filter(self, queryset=None):
+        products = Product.objects.filter(category=Category.objects.get(slug=self.kwargs['slug'])).all()
+        ProductFilter.declared_filters['characteristic'].queryset = queryset
+        return ProductFilter(self.request.GET, queryset=products)
+
+    def get_queryset(self, **kwargs):
+        return self.get_filter(self.get_characteristics()).qs
 
     def get_context_data(self, **kwargs):
         context = super(CategoryProductListView, self).get_context_data()
-        products = Product.objects.filter(category=self.object).all()
-        c = Characteristic.objects.filter(product__category=self.object).all()
-        context['filter'] = ProductFilter(self.request.GET)
-        context['filter'].declared_filters['characteristics'].queryset = c
-        context['products'] = products
+        context['category'] = Category.objects.get(slug=self.kwargs['slug'])
+        context['filter'] = self.get_filter(queryset=self.get_characteristics())
         return context
 
 
