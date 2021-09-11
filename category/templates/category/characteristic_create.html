@@ -8,8 +8,9 @@
 {% endblock %}
 
 {% block form_title %}Создание характеристик{% endblock %}
-{% block action %}{% url 'characteristic_create' slug=current_slug %}{% endblock %}
+{% block action %}{% url 'characteristic_create' slug=slug %}{% endblock %}
 {% block btn_text %}Сохранить{% endblock %}
+
 
 
 {% block extra_content %}
