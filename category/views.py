@@ -11,6 +11,7 @@ from .forms import (
     ProductCreateForm,
     CharacteristicCreateFormSet,
 )
+from .filters import ProductFilter
 
 
 class CategoryListView(ListView):
@@ -32,7 +33,11 @@ class CategoryProductListView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryProductListView, self).get_context_data()
-        context['products'] = Product.objects.filter(category=self.object).all()
+        products = Product.objects.filter(category=self.object).all()
+        c = Characteristic.objects.filter(product__category=self.object).all()
+        context['filter'] = ProductFilter(self.request.GET)
+        context['filter'].declared_filters['characteristics'].queryset = c
+        context['products'] = products
         return context
 
 
