@@ -122,3 +122,41 @@
 .filter__form > button {
   display: block;
 }
+
+.pagination {
+  margin-bottom: 50px;
+}
+
+.pagination__row {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__pages {
+  display: flex;
+}
+
+.pagination_item {
+  display: block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(0, 255, 0, 0.5);
+  color: darkgreen;
+  text-align: center;
+  padding-top: 6px;
+  text-decoration: none;
+}
+
+.pagination_item:hover {
+  background-color: darkgreen;
+  color: #fff;
+  transition-duration: .4s;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.disabled {
+  pointer-events: none;
+}

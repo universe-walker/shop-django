@@ -39,4 +39,51 @@
       </div>
     </div>
   </div>
+  {% if is_paginated %}
+    <div class="pagination">
+      <div class="container">
+        <div class="pagination__row">
+          <div class="pagination__back {% if not page_obj.has_previous %}disabled{% endif %}">
+            {% if page_obj.has_previous %}
+              <a class="pagination_item" href=".?page={{ page_obj.previous_page_number }}"><</a>
+            {% else %}
+              <a class="pagination_item" href="#"><</a>
+            {% endif %}
+          </div>
+          <div class="pagination__pages">
+            {% if page_obj.has_previous %}
+              {% if page_obj.number != 1 and page_obj.previous_page_number != 1 %}
+                <a class="pages__first pagination_item" href=".?page=1">
+                  <span>1</span>
+                </a>
+              {% endif %}
+              <a class="pages__previous pagination_item" href=".?page={{ page_obj.previous_page_number }}">
+                <span>{{ page_obj.previous_page_number }}</span>
+              </a>
+            {% endif %}
+            <a class="pages__current pagination_item active" href=".?page={{ page_obj.number }}">
+              <span>{{ page_obj.number }}</span>
+            </a>
+            {% if page_obj.has_next %}
+                <a class="pages__next pagination_item" href=".?page={{ page_obj.next_page_number }}">
+                  <span>{{ page_obj.next_page_number }}</span>
+                </a>
+                {% if page_obj.paginator.num_pages != page_obj.current_page and page_obj.paginator.num_pages != page_obj.next_page_number %}
+                <a class="pages__last pagination_item" href=".?page={{ page_obj.paginator.num_pages }}">
+                  <span>{{ page_obj.paginator.num_pages }}</span>
+                </a>
+                {% endif %}
+            {% endif %}
+          </div>
+          <div class="pagination__forward {% if not page_obj.has_next %}disabled{% endif %}">
+            {% if page_obj.has_next %}
+              <a href=".?page={{ page_obj.next_page_number }}" class="pagination_item">></a>
+            {% else %}
+              <a class="pagination_item" href="#">></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}
