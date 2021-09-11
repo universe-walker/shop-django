@@ -76,11 +76,49 @@
 }
 
 .filter {
-  height: 700px;
-  width: 400px;
+  height: auto: ;
+  width: 315px;
   background-color: rgba(0, 255, 0, 0.5);
   position: absolute;
   right: 30px;
   top: 190px;
   border-radius: 5px;
+  padding: 0 0 0 10px;
+}
+
+.filter__row {
+    padding: 20px 0;
+}
+
+.filter__price {
+  margin: 5px;
+}
+
+.price__input {
+  display: inline;
+  width: 150px;
+}
+
+#id_rating {
+  display: block;
+}
+
+#id_price_0 label {
+  display: block;
+}
+
+#id_price_0, #id_price_1 {
+  width: 80px;
+}
+
+#id_price_1 {
+  margin-left: 5px;
+}
+
+.filter__form label {
+  display: block;
+}
+
+.filter__form > button {
+  display: block;
 }

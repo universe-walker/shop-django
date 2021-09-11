@@ -9,9 +9,14 @@
 {% endblock %}
 
 {% block main %}
-  <aside class="filter">
-    <div class="filter__row">
-
+  <aside class="aside">
+    <div class="filter">
+      <div class="filter__row">
+        <form class="filter__form" action="" method="GET">
+          {{ filter.form }}
+          <button type="submit" name="button">Поиск</button>
+        </form>
+      </div>
     </div>
   </aside>
   <div class="container">
