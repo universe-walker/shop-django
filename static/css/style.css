@@ -22,28 +22,37 @@ html, body {
   font-family: sans-serif;
 }
 .nav__row {
-  padding: 20px 0 0 0;
+  padding: 0 20px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 .nav__left {
   display: flex;
-  width: 70%;
   font-size: 25px;
 }
-.nav__item {
-  margin-left: 20px;
+.nav_item {
+  margin-right: 20px;
   line-height: 1;
 }
-.nav__item a {
+
+.nav_item:last-child {
+  margin-right: 0;
+}
+
+.nav_link {
   text-decoration: none;
   color: #fff;
 }
- .nav__item a:hover {
+ .nav_link:hover {
   color: rgba(0, 255, 0, 0.5);
   transition-duration: .4s;
 }
 .nav__right {
-  margin: 0 auto;
+  display: flex;
+  height: 100%;
+  align-items: inherit;
 }
 .nav__search {
   padding: 0;
