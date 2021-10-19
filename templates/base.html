@@ -16,20 +16,23 @@
     <nav class="nav">
       <nav class="nav__row">
         <div class="nav__left">
-          <div class="nav__item">
-            <a href="{% url 'category_list' %}">Главная</a>
+          <div class="nav__home nav_item">
+            <a href="{% url 'category_list' %}" class="nav_link">Главная</a>
           </div>
-          <div class="nav__item">
-            <a href="#">Категории</a>
+          <div class="nav__categories nav_item">
+            <a href="#" class="nav_link">Категории</a>
           </div>
         </div>
         <div class="nav__right">
-          <div class="nav__search">
+          <div class="nav__search nav_item">
             <form action="{% url 'search' %}" method="GET">
               <input type="search" class="search__input" name="q" id="search">
               <button type="submit" name="button" class="search__btn">Поиск</button>
             </form>
             <div class="search__advice"></div>
+          </div>
+          <div class="nav__login-wrapper nav_item">
+            <a href="#" class="nav__login nav_link">Вход/Регистрация</a>
           </div>
         </div>
       </nav>
