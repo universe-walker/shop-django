@@ -1,0 +1,209 @@
+.login__container {
+    padding: 60px 0 100px 0;
+}
+
+.login__frame {
+    height: 575px;
+    width: 430px;
+    background:
+    linear-gradient(
+    rgba(35,43,85,0.75),
+    rgba(35,43,85,0.95)),
+    url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/clouds-cloudy-forest-mountain.jpg) no-repeat center center;
+    background-size: cover;
+    margin: 0 auto;
+    border-top: solid 1px rgba(255,255,255,.5);
+    border-radius: 5px;
+    box-shadow: 0px 12px 7px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+.login__frame_long {
+    height: 615px;
+}
+
+.login__frame_short {
+    height: 400px;
+    margin-top: 50px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+}
+
+.login__nav {
+    width: 100%;
+    height: 100px;
+    padding-top: 40px;
+    opacity: 1;
+    transition: all .5s ease;
+}
+
+.login_nav-up {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+.nav_li {
+    padding: 0 10px;
+    font-size: 1.2rem;
+    display: inline;
+    text-align: left;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.login__signin_active a {
+    padding-bottom: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: solid 2px #1059FF;
+    transition: all .25s ease;
+    cursor: pointer;
+  }
+  
+  .login__signin_inactive a {
+    padding-bottom: 0;
+    color: rgba(255,255,255,.3);
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+  }
+
+
+  .login__signup_active a {
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: solid 2px #1059FF;
+    padding-bottom: 10px;
+  }
+  
+  .login__signup_inactive a {
+    cursor: pointer;
+    color: rgba(255,255,255,.3);
+    text-decoration: none;
+    transition: all .25s ease;
+  }
+
+.login_form {
+    width: 430px;
+    height: 375px;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 55px 37px 0 37px;
+}
+
+.login__form-signin {
+    transition: opcity .5s ease, transform .5s ease;
+}
+
+.login__form-signin_left {
+    transform: translateX(-400px);
+    opacity: 0;
+}
+
+.login__form-signup {
+    position: relative;
+    top: -375px;
+    left: 400px;
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+.login__form-signup_left {
+    transform: translateX(-399px);
+    opacity: 1;
+}
+
+.login__form-signup_down {
+    top: 0;
+    opacity: 0;
+}
+
+.login__form-signin input, .login__form-signup input {
+    color: #fff;
+    font-size: .8rem;
+}
+
+.login__form-styling {
+    width: 100%;
+    height: 35px;
+    padding-left: 15px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,.2);
+}
+
+label {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: .8rem;
+    padding: 0 0 10px 15px;
+    display: block;
+}
+
+:focus {
+    outline: none;
+}
+
+.login__form-signin input:focus, textarea:focus,
+.login__form-signup input:focus, textarea:focus {
+    background: rgba(55, 12, 12, .3);
+    padding-right: 40px;
+    transition: background .5s ease;
+}
+
+label[for="checkbox"] {
+    display: inline;
+}
+
+.login__signin-btn {
+    display: block;
+    padding-top: 8px;
+    width: 100%;
+    height: 35px;
+   border: none;
+   border-radius: 20px;
+   margin-top: -8px;
+   color: rgba(255,255,255, 1);
+   text-decoration: none;
+}
+
+.login__btn-animate {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: .8rem;
+    text-align: center;
+    padding-top: 8px;
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 23px;
+    background-color: rgba(16,89,255, 1);
+    left: 0;
+    top: 0;
+    transition: all .5s ease, top .5s ease .5s, height .5s ease .5s, background-color .5s ease .75s; 
+}
+
+a.login__signup-btn:hover, a.login__signin-btn:hover {
+    cursor: pointer; 
+    background-color: #0F4FE6;
+    transition: background-color .5s; 
+}
+
+.login__checkbox {
+    width: 20px; 
+    height: 20px;
+    border-radius: 50%;
+    transition: box-shadow .3s;
+    background: lightgrey;
+    cursor: pointer;
+    border: 0;
+    appearance: none; 
+    -webkit-appearance: none; 
+}
+
+.login__checkbox:checked {
+    box-shadow: inset 0 0 0 10px blue;
+}
