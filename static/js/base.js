@@ -1,4 +1,11 @@
-$(document).ready(function() {
+window.addEventListener('DOMContentLoaded', () => {
+    // Work with shopping cart
+    let shopcart = document.querySelector('.nav__shopcart');
+    if (parseInt(shopcart.attributes["data-count"].value) === 0 && !shopcart.classList.contains('.hidden_after')) {
+      shopcart.classList.toggle('hidden_after');
+    }
+
+  // Work with search
   $(".search__advice").hide();
   $("#search").keyup((event) => {
     switch(event.keyCode) {
@@ -54,5 +61,4 @@ $(document).ready(function() {
       $('.search__advice').show();
     }
   })
-
 });
