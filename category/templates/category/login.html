@@ -26,16 +26,14 @@
                             </ul>
                             <form action="#" class="login__form-signin login__form-sigin_left login_form" name="form">
                                 <label for="email">Имя</label>
-                                <input type="text" class="login__form-styling" name="email">
+                                <input type="text" class="login__form-styling" name="email" data-validate-field="email">
                                 <label for="password">Пароль</label>
-                                <input type="password" class="login__form-styling" name="password">
-                                <input type="checkbox" class="login__checkbox">
+                                <input type="password" class="login__form-styling" name="password" data-validate-field="password">
+                                <input type="checkbox" class="login__checkbox" data-validate-field="checkbox">
                                 <label for="checkbox">
                                      <span class="ui">Запомнить меня</span>
                                 </label>
-                                <div class="login__btn-animate">
-                                    <a href="#" class="login__signin-btn">Войти</a>
-                                </div>
+                                <button class="login__signin-btn login__submit-btn" type="submit">Войти</button>
                             </form>
                             <form action="#" class="login__form-signup login_form" name="form">
                                 <label for="first_name">Имя</label>
@@ -49,6 +47,7 @@
                                 <label for="confirm_password">Повторите пароль</label>
                                 <input type="password" name="confirm_password" class="login__form-styling">
                                 <a href="#" class="login__signup-btn"></a>
+                                <button class="login__signup-btn login__submit-btn">Регистрация</button>
                             </form>
                         </div>
                     </div>
