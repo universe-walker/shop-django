@@ -24,8 +24,8 @@
                                     <a href="#" class="login__btn">Регистрация</a>
                                 </li>
                             </ul>
-                            <form action="#" class="login__form-signin login__form-sigin_left login_form" name="form">
-                                <label for="email">Имя</label>
+                            <form action="#" class="login__form-signin login__form-sigin_left login_form" name="form" method="POST">
+                                <label for="email">Email</label>
                                 <input type="text" class="login__form-styling" name="email" data-validate-field="email">
                                 <label for="password">Пароль</label>
                                 <input type="password" class="login__form-styling" name="password" data-validate-field="password">
@@ -35,18 +35,17 @@
                                 </label>
                                 <button class="login__signin-btn login__submit-btn" type="submit">Войти</button>
                             </form>
-                            <form action="#" class="login__form-signup login_form" name="form">
+                            <form action="#" class="login__form-signup login_form" name="form" method="POST">
                                 <label for="first_name">Имя</label>
-                                <input type="text" class="login__form-styling" name="first_name">
+                                <input type="text" class="login__form-styling" name="first_name" data-validate-field="first_name">
                                 <label for="second_name">Фамилия</label>
-                                <input type="text" class="login__form-styling" name="first_name">
+                                <input type="text" class="login__form-styling" name="second_name" data-validate-field="last_name" >
                                 <label for="email">Email</label>
-                                <input type="text" class="login__form-styling" name="email">
+                                <input type="text" class="login__form-styling" name="email" data-validate-field="email">
                                 <label for="password">Пароль</label>
-                                <input type="password" name="password" class="login__form-styling">
+                                <input type="password" name="password" class="login__form-styling" data-validate-field="password">
                                 <label for="confirm_password">Повторите пароль</label>
-                                <input type="password" name="confirm_password" class="login__form-styling">
-                                <a href="#" class="login__signup-btn"></a>
+                                <input type="password" name="password_repeat" class="login__form-styling" data-validate-field="password_repeat">
                                 <button class="login__signup-btn login__submit-btn">Регистрация</button>
                             </form>
                         </div>
@@ -58,6 +57,7 @@
 {% endblock %}
 
 {% block scripts %}
-  {{ block.super }}
-  <script src="{% static 'js/login.js' %}"></script>
+    {{ block.super }}
+    <script src="{% static 'js/login.js' %}"></script>
+    <script type="module" src="{% static 'js\just-validate.min.js' %}"></script>
 {% endblock %}

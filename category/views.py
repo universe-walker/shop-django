@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, JsonResponse
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
@@ -139,3 +141,12 @@ class CharacteristicCreateView(CreateView):
                 i.save()
             return HttpResponseRedirect(product.get_absolute_url())
         return render(request, template_name=self.template_name, context={'form': bound_form, 'slug': kwargs['slug']})
+
+
+class CheckEmailView(View):
+    def get(self, request, *args, **kwargs):
+        email = request.GET['email'][0]
+        if User.objects.filter(email=email).exists():
+            return HttpResponse('EXIST')
+        else:
+            return HttpResponse('OK')

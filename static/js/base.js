@@ -1,3 +1,5 @@
+const CHECK_EMAIL_URL = 'http://localhost:8000/check-email/';
+
 window.addEventListener('DOMContentLoaded', () => {
     // Work with shopping cart
     let shopcart = document.querySelector('.nav__shopcart');
