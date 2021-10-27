@@ -40,8 +40,10 @@ INSTALLED_APPS = [
 
     'django.contrib.humanize',
     'mptt',
-    'category',
     'django_filters',
+
+    'category',
+    'auth_app'
 ]
 
 MIDDLEWARE = [
@@ -88,6 +90,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'auth_app.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
